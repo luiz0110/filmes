@@ -1,18 +1,52 @@
 package br.com.tech4me.filmes.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "movie")
 
 public class Filme {
+@OneToMany(mappedBy = "id.filme")
+private List<Atuacao> atuacoes;
+
+@ManyToMany(fetch = FetchType.EAGER)
+@JoinTable(
+    name = "movie_direction",
+    joinColumns = @JoinColumn(name = "mov_id", referencedColumnName = "mov_id"),
+    inverseJoinColumns = @JoinColumn(name = "dir_id", referencedColumnName = "dir_id")
+    )
+
+private List<Diretor> diretores = new ArrayList<>();
+
+public List<Diretor> getDiretores(){
+    return diretores;
+}
+    public Map<String, Ator> getElenco(){
+        Map<String, Ator> saida = new HashMap<>();
+        
+        atuacoes.forEach(at -> saida.put(at.getPapel().trim(),at.getId().getAtor()));
+        return saida;
+    }
+    //ls//
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,8 +123,11 @@ public class Filme {
     }
 
     @Override
-    public String toString(){
-        return String.format("Titulo: %s (%d)", titulo.trim(), ano);
-    }
-    
+public String toString(){
+    List<Diretor> dirs = getDiretores();
+    return String.format("Titulo: %s (%d)\n\tDiretores: %s\n\ntElenco: %s\n",
+    titulo.trim(), ano, dirs, getElenco());
 }
+
+}
+//ls//

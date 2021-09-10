@@ -1,7 +1,7 @@
 package br.com.tech4me.filmes.telas;
 
 import java.util.Scanner;
-
+//ls//
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.repository.Repository;
@@ -61,12 +61,11 @@ public class LoopPrincipal {
                 voltarMenu(entrada);
             }
          } while(opcao != 0);
-    }
-
-    public static void limparTela() {
-    }
-
-    private void voltarMenu(Scanner entrada) {
-    }
+       
+        }
+    
+        public static void limparTela() {}
+    
+        private void voltarMenu(Scanner entrada) {}
   
 }
