@@ -1,13 +1,13 @@
 package br.com.tech4me.filmes.telas;
 
 import java.util.Scanner;
-//ls//
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.repository.Repository;
 import org.springframework.stereotype.Component;
 
-import br.com.tech4me.filmes.repository.FilmeRepositorio;
+import br.com.tech4me.filmes.repositorios.FilmeRepositorio;
 
 @Component
 public class LoopPrincipal {
@@ -37,16 +37,17 @@ public class LoopPrincipal {
 
             switch (opcao) {
                 case 1:
-                    
+                    tela = new TelaBuscarFilme();
+                    repositorio = context.getBean(FilmeRepositorio.class);
                     break;
                 case 2:
-                    
+                    tela = new TelaCadastrarFilme();
+                    repositorio = context.getBean(FilmeRepositorio.class);
                     break;
-                    case 3:
+                case 3:
                     tela = new TelaListarFilmes();
                     repositorio = context.getBean(FilmeRepositorio.class);
                     break;
-
                 case 0:
                     System.out.println("Fim do programa!");
                     break;
@@ -56,16 +57,31 @@ public class LoopPrincipal {
                     break;
             }
 
-            if (tela != null) {
+            if(tela != null) {
+                limparTela();
                 tela.executar(entrada, repositorio);
                 voltarMenu(entrada);
             }
-         } while(opcao != 0);
-       
-        }
-    
-        public static void limparTela() {}
-    
-        private void voltarMenu(Scanner entrada) {}
-  
+        } while(opcao != 0);
+
+        entrada.close();
+    }
+
+    public static void limparTela() {
+        try {
+            // Limpa toda a tela do console
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                System.out.print("\033[H\033[2J");
+        } catch(Exception e) {}
+    }
+
+    private void voltarMenu(Scanner entrada) {
+        System.out.print("\nPressione ENTER para continuar...");
+        entrada.nextLine();
+
+        limparTela();
+        System.out.flush();
+    }
 }

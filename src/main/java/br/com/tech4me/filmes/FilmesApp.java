@@ -9,19 +9,16 @@ import br.com.tech4me.filmes.telas.LoopPrincipal;
 
 @SpringBootApplication
 public class FilmesApp implements CommandLineRunner {
-
 	@Autowired
 	private LoopPrincipal loopPrincipal;
 
 	public static void main(String[] args) {
 		SpringApplication.run(FilmesApp.class, args);
 	}
-	
+
 	@Override
 	public void run(String... args) throws Exception {
 		loopPrincipal.loop();
 		System.exit(0);
-		
 	}
-	
 }
