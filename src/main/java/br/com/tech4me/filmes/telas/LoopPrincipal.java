@@ -1,5 +1,5 @@
 package br.com.tech4me.filmes.telas;
-
+/*ls*/
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +25,9 @@ public class LoopPrincipal {
             Repository repositorio = null;
             limparTela();
             
-            System.out.println("**************");
-            System.out.println("MENU PRINCIPAL");
-            System.out.println("**************");
+            System.out.println("********************");
+            System.out.println("---MENU PRINCIPAL---");
+            System.out.println("*********************");
             System.out.println("1 - Buscar filme");
             System.out.println("2 - Incluir filme");
             System.out.println("3 - Listar filmes");
@@ -51,7 +51,7 @@ public class LoopPrincipal {
                     repositorio = context.getBean(FilmeRepositorio.class);
                     break;
                 case 4:
-                    tela = new CadastrarAtor();
+                    tela = new TelaCadastrarAtor();
                     repositorio = (Repository) context.getBean(AtorRepository.class);
                     break;
                 case 0:
@@ -75,7 +75,7 @@ public class LoopPrincipal {
 
     public static void limparTela() {
         try {
-            // Limpa toda a tela do console
+            // Limpa tela
             if (System.getProperty("os.name").contains("Windows"))
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             else

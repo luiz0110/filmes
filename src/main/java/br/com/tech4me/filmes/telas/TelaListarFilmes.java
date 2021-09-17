@@ -12,7 +12,7 @@ public class TelaListarFilmes implements Tela<Filme, Integer> {
     @Override
     public void executar(Scanner entrada, Repository<Filme, Integer> repositorio) {
         FilmeRepositorio repo = (FilmeRepositorio)repositorio;
-        List<Filme> filmes = repo.findByOrderByTituloAsc();
+        List<Filme> filmes = repo.obterFimesComAtuacaoEDiretores();
 
         if(filmes.isEmpty()) {
             System.out.println("\nNão há filmes cadastrados.");

@@ -7,7 +7,7 @@ import org.springframework.data.repository.Repository;
 import br.com.tech4me.filmes.model.Ator;
 import br.com.tech4me.filmes.repositorios.AtorRepository;
 
-public class CadastrarAtor implements Tela<Ator, Integer> {
+public class TelaCadastrarAtor implements Tela<Ator, Integer> {
 
     @Override
     public void executar(Scanner entrada, Repository<Ator, Integer> repositorio) {
@@ -16,7 +16,12 @@ public class CadastrarAtor implements Tela<Ator, Integer> {
         System.out.println("\n*****************");
         System.out.println("Cadastro de Ator");
         System.out.println("*****************");
-
+    
+        System.out.print("Informe o id do Ator: ");
+        ator
+        
+        .setId(entrada.nextInt());
+        entrada.nextLine();
         System.out.print("Nome: ");
         ator.setNome(entrada.nextLine());
         System.out.print("Sobrenome: ");

@@ -1,5 +1,5 @@
-//ls//
 package br.com.tech4me.filmes.model;
+//ls//
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,24 +7,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "actor")
-public class Ator {
+@Table(name = "director")
+public class Diretor {
     @Id
-    @Column(name = "act_id")   
-    private Integer id;
-    @Column(name = "act_fname")
+    @Column(name = "dir_id")
+    private Integer Id;
+    @Column(name = "dir_fname")
     private String nome;
-    @Column(name = "act_lname")
+    @Column(name = "dir_lname")
     private String sobrenome;
-    @Column(name = "act_gender")
-    private Character sexo;
 
-//#region Getter/Setter
+    //#region Getter/Setter
     public Integer getId() {
-        return id;
+        return Id;
     }
     public void setId(Integer id) {
-        this.id = id;
+        Id = id;
     }
     public String getNome() {
         return nome;
@@ -38,23 +36,16 @@ public class Ator {
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
-
-    public Character getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(Character character) {
-        this.sexo = character;
-    }
-    //#endregion
-   
+     //#endregion
+     
     public String getNomeCompleto(){
-        return String.format("%s %s", nome.trim(), sobrenome.trim());
+    return String.format("%s %s", nome.trim(), sobrenome.trim());
     }
-        
+  
+
     @Override
     public String toString(){
-        return getNomeCompleto();
-    }
-
+    return getNomeCompleto();
+    }   
 }
+
