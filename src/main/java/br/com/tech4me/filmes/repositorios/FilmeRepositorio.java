@@ -13,6 +13,6 @@ public interface FilmeRepositorio extends JpaRepository<Filme, Integer> {
     List<Filme> findByOrderByTituloAsc();
 	List<Filme> findByTituloContainsIgnoreCaseOrderByTituloAsc(String titulo);
 
-    @Query("select f from Filme f left join fetch f.atuacoes")//JPQL//
+    @Query("select f from Filme f left join fetch f.atuacoes order by f.titulo")//JPQL//
     List<Filme>obterFimesComAtuacaoEDiretores();
    }

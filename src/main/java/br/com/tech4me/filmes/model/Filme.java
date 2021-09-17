@@ -134,7 +134,7 @@ public class Filme {
 
     @Override
     public String toString() {
-        return String.format("Título: %s \nDiretores: %s \nAtuacoes: %s",
-         titulo, diretores, atuacoes);
+        return String.format("Título: %s (%d)\n\tDiretores: %s \n\tAtuacoes: %s\n",
+         titulo.trim(), ano, diretores, atuacoes);
     }
 }
